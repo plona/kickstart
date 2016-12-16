@@ -1,0 +1,8 @@
+
+#
+EDITOR=vim
+PAGER=less
+LESS="-giJMS -x4 -FX"
+
+export EDITOR PAGER LESS
+

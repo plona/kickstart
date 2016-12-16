@@ -1,0 +1,14 @@
+
+### extending and improving command history
+
+hist() {
+    history | awk '{$1=$2=$3=""; print $0}' | awk '{gsub(/^[[:cntrl:][:space:]]+|[[:cntrl:][:space:]]+$/,""); print;}'
+}
+
+HISTFILESIZE=1000000
+HISTSIZE=1000000
+HISTCONTROL=ignoreboth
+HISTIGNORE='ls:bg:fg:history:vpn'
+HISTTIMEFORMAT='%F %T '
+PROMPT_COMMAND='history -a'
+
