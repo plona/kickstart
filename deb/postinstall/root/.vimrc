@@ -38,7 +38,7 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 " ludzkie kolory
-colorscheme morning
+colorscheme desert
 " odrysowanie ekranu + wyłączenie podświetlenia (:noh)
 nnoremap <C-L> :nohl<CR><C-L>
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
