@@ -89,7 +89,7 @@ d-i apt-setup/contrib boolean true
 # package selection
 tasksel tasksel/first multiselect standard
 d-i pkgsel/upgrade select none
-d-i pkgsel/include string apt-file openssh-server htop mc tmux vim wajig ntp ntpdate
+d-i pkgsel/include string apt-file openssh-server htop mc tmux vim wajig ntp ntpdate mlocate
 
 # bootloader
 d-i grub-installer/only_debian boolean true
