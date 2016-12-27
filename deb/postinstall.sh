@@ -26,6 +26,7 @@ cd /tmp || exit 1
 tar xvf postinstall.tar
 cd postinstall || exit 1
 cp etc/tmux.conf /etc
+cp etc/profile.d/20mc.sh /etc/profile.d
 cp -r root/.config /root
 cp root/.bashrc /root
 cp root/.profile /root
