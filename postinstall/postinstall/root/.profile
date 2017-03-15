@@ -15,6 +15,7 @@ export PATH
 PAGER=less
 LESS="-giJMS -x4 -FX"
 export PAGER LESS
+stty stop ''
 
 mesg n
 
