@@ -31,9 +31,16 @@ cp -r root/.config /root
 cp root/.bashrc /root
 cp root/.profile /root
 cp root/.vimrc /root
+cp root/.psqlrc /root
 
+cd /etc/ssh || exit 1
+cp sshd_config sshd_config.orig
 sed -i 's/^PermitRootLogin\s.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+
 ln -s /usr/share/doc/tmux/examples/bash_completion_tmux.sh /etc/bash_completion.d/bash_completion_tmux.sh
+
+cd /usr/bin || exit 1
+ln -s tmux t
 
 # grub
 cd /etc/default || exit 1
