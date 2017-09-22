@@ -37,8 +37,6 @@ cp root/.psqlrc /root
 cd /etc/ssh || exit 1
 sed -i.orig -e 's/^PermitRootLogin\s.*\|^#PermitRootLogin\s.*/PermitRootLogin no/' /etc/ssh/sshd_config
 
-ln -s /usr/share/doc/tmux/examples/bash_completion_tmux.sh /etc/bash_completion.d/bash_completion_tmux.sh
-
 cd /usr/bin || exit 1
 ln -s tmux t
 
