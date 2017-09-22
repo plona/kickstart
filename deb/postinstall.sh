@@ -27,6 +27,7 @@ tar xvf postinstall.tar
 cd postinstall || exit 1
 cp etc/tmux.conf /etc
 cp etc/profile.d/20mc.sh /etc/profile.d
+cp etc/bash_completion.d/tmux /etc/bash_completion.d
 cp -r root/.config /root
 cp root/.bashrc /root
 cp root/.profile /root
@@ -34,8 +35,7 @@ cp root/.vimrc /root
 cp root/.psqlrc /root
 
 cd /etc/ssh || exit 1
-cp sshd_config sshd_config.orig
-sed -i 's/^PermitRootLogin\s.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+sed -i.orig -e 's/^PermitRootLogin\s.*\|^#PermitRootLogin\s.*/PermitRootLogin no/' /etc/ssh/sshd_config
 
 ln -s /usr/share/doc/tmux/examples/bash_completion_tmux.sh /etc/bash_completion.d/bash_completion_tmux.sh
 
@@ -44,9 +44,6 @@ ln -s tmux t
 
 # grub
 cd /etc/default || exit 1
-cp grub grub.orig
 
-sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="text"/' grub
-sed -i 's/^GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/' grub
-sed -i 's/^#GRUB_TERMINAL=console/GRUB_TERMINAL=console/' grub
+sed -i.orig -e 's/^GRUB_CMDLINE_LINUX_DEFAULT="quiet"/GRUB_CMDLINE_LINUX_DEFAULT="text"/' -e 's/^GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="ipv6.disable=1"/' -e 's/^#GRUB_TERMINAL=console/GRUB_TERMINAL=console/' grub
 update-grub
