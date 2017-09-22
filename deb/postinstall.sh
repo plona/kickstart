@@ -31,7 +31,6 @@ cp etc/bash_completion.d/tmux /etc/bash_completion.d
 cp -r root/.config /root
 cp root/.bashrc /root
 cp root/.profile /root
-cp root/.vimrc /root
 cp root/.psqlrc /root
 
 cd /etc/ssh || exit 1
