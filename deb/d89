@@ -1,5 +1,5 @@
 # debian 8/9 LVM, only /root and swap 10GB HDD
-# base installation, config by ansible
+# base installation, later config by ansible
 
 # localization
 d-i debian-installer/locale string pl_PL.UTF-8
@@ -7,7 +7,6 @@ d-i keyboard-configuration/xkb-keymap select pl
 
 # network configuration
 d-i netcfg/choose_interface select auto
-d-i netcfg/disable_dhcp boolean true
 
 # mirror settings
 d-i mirror/protocol select http
@@ -20,11 +19,11 @@ d-i passwd/root-password-crypted password $6$h6U2an.h$/Gq8jn9AiGuoqEPcWfrNvJC26S
 
 # To create a normal user account.
 d-i passwd/make-user boolean true
-d-i passwd/user-fullname string Marek Płonka
-d-i passwd/username string marekpl
+d-i passwd/user-fullname string Basic Installer
+d-i passwd/username string instalator
 # Normal user's password, either in clear text
-d-i passwd/user-password password marekpl
-d-i passwd/user-password-again password marekpl
+d-i passwd/user-password password q
+d-i passwd/user-password-again password q
 # or encrypted using an MD5 hash.
 #d-i passwd/user-password-crypted password [MD5 hash]
 d-i passwd/user-default-groups string sudo
@@ -95,8 +94,8 @@ d-i apt-setup/non-free boolean true
 d-i apt-setup/contrib boolean true
 
 # package selection
-#tasksel tasksel/first multiselect standard
-tasksel tasksel/first multiselect ssh-server
+tasksel tasksel/first multiselect standard
+#tasksel tasksel/first multiselect ssh-server
 # d-i pkgsel/upgrade select none
 d-i pkgsel/include string openssh-server sudo
 
@@ -105,7 +104,7 @@ d-i grub-installer/only_debian boolean true
 d-i grub-installer/choose_bootdev	select	/dev/vda
 
 # postinstall
-d-i preseed/late_command string in-target sed -i.orig -e 's/dhcp/static\n   address 192.168.123.54\/24/' /etc/network/interfaces
+d-i preseed/late_command string in-target sed -i.orig -e 's/dhcp/static\n   address 192.168.122.54\/24/' /etc/network/interfaces
 
 # finishing instalation
 d-i debian-installer/exit/poweroff boolean true
